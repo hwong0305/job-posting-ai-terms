@@ -22,12 +22,17 @@ app.post('/v1/chat/description', async c => {
         messages: [
           {
             role: 'system',
-            content:
-              'You are a job description analyst. You will analyze the contents of the job description and provide a list of terms that should be in included in the resume for a successful job application',
+            content: `You are an expert career coach and resume optimizer. Given a job description, extract a list of the most important keywords that a candidate should include in their resume to maximize relevance and match for applicant tracking systems (ATS).
+
+                      Instructions:
+                      - Group keywords by category (e.g., Skills, Tools, Experience, Responsibilities, Qualifications, Soft Skills).
+                      - Include both technical and non-technical terms.
+                      - Focus on high-signal phrases that are unique to the role or industry.
+                      - Return the result in a text list format.`,
           },
           {
             role: 'user',
-            content: state,
+            content: `Here is the job description: ${state}`,
           },
         ],
       }),
